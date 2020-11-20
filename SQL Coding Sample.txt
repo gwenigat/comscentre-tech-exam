@@ -1,0 +1,35 @@
+-- Insert record in database:
+INSERT INTO artists(name)
+	VALUES("Rivermaya");
+INSERT INTO artists(name)
+	VALUES("Psy");
+
+-- Insert songs to albums:
+INSERT INTO songs(title, length, genre, album_id)
+	VALUES("Gangnam Style", 253, "K-Pop", 1);
+INSERT INTO songs(title, length, genre, album_id)
+	VALUES("Kundiman", 234, "OPM", 2);
+INSERT INTO songs(title, length, genre, album_id)
+	VALUES("Kisapmata", 279, "OPM", 2);
+
+-- Insert multiple records in one query:
+INSERT INTO albums(name, year, artist_id)
+	VALUES("Psy 6", 2012, 2), ("Trip", 1996, 1);
+
+-- ALTER TABLE <table_name> ADD <column_name> <data_type>
+ALTER TABLE songs ADD `like` varchar(255) NOT NULL;
+
+-- DROP COLUMN
+ALTER TABLE songs DROP COLUMN upvotes;
+
+-- SELECT /RETRIEVE data
+-- ex:
+SELECT title, genre FROM songs;
+SELECT title FROM songs WHERE genre = "OPM";
+SELECT title, length FROM songs WHERE genre = "OPM" AND length > 240;
+
+-- UPDATE data/record (NOTE: removing the WHERE clause will update all records):
+UPDATE songs SET length = 240 WHERE title = "Kundiman";
+
+-- DELETE data/record (NOTE: removing the WHERE clause will delete all records):
+DELETE FROM songs WHERE genre = "OPM" AND length > 240;
